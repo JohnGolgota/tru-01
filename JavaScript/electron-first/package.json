@@ -1,0 +1,13 @@
+{
+  "name": "electron-first",
+  "version": "1.0.0",
+  "description": "Me apetece",
+  "main": "main.js",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^25.3.0"
+  },
+  "scripts": {
+    "start": "electron ."
+  }
+}

@@ -1,0 +1,25 @@
+{
+    "extensions.ignoreRecommendations": true,
+    "html.format.wrapLineLength": 0,
+    "workbench.editor.wrapTabs": true,
+    "editor.indentSize": "tabSize",
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.minimap.enabled": false,
+    "[markdown]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.markdownlint": true
+    },
+    "php.validate.executablePath": null,
+    "files.exclude": {
+        "**/.github": true
+    },
+    "workbench.startupEditor": "none",
+    "editor.fontLigatures": true,
+    "editor.guides.bracketPairs": true,
+    "editor.bracketPairColorization.enabled": true
+}

@@ -1,0 +1,36 @@
+{
+    "folders": [
+        {
+            "path": ".."
+        }
+    ],
+    "settings": {
+        "workbench.iconTheme": "eq-material-theme-icons-darker",
+        "workbench.colorTheme": "DuoTone Dark Sea",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "rome.rome",
+        "editor.codeActionsOnSave": {
+            "source.fixAll.rome": true,
+            "source.organizeImports": true
+        },
+        "[typescriptreact]": {
+            "editor.defaultFormatter": "rome.rome"
+        },
+        "[javascript]": {
+            "editor.defaultFormatter": "rome.rome"
+        },
+        "[javascriptreact]": {
+            "editor.defaultFormatter": "rome.rome"
+        },
+        "[typescript]": {
+            "editor.defaultFormatter": "rome.rome"
+        },
+        "[vue]": {
+            "editor.defaultFormatter": "Vue.volar"
+        },
+        "[css]": {
+            "editor.defaultFormatter": "vscode.css-language-features"
+        },
+        "css.lint.unknownAtRules": "ignore",
+    }
+}

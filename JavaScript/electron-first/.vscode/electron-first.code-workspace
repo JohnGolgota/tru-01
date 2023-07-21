@@ -1,0 +1,11 @@
+{
+    "folders": [
+        {
+            "path": ".."
+        }
+    ],
+    "settings": {
+        "workbench.colorTheme": "GitHub Dark Dimmed",
+        "workbench.iconTheme": "vscode-icons",
+    }
+}

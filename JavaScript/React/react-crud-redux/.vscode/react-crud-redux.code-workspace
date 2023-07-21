@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+    ],
+    "settings": {
+        "workbench.iconTheme": "material-icon-theme",
+        "workbench.colorTheme": "Obsidian Dark Theme (Rust syntax optimized)"
+    }
+}
