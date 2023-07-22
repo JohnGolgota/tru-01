@@ -94,3 +94,8 @@ dist-ssr
 
 # Go workspace file
 go.work
+
+# Vim
+*.un~
+*.md~
+.gitignore~
