@@ -1,5 +1,6 @@
 *sensible*
 *copy
+*.csv
 
 # Editor directories and files
 .vscode/*
