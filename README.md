@@ -14,6 +14,7 @@ Repositorios de prueba en multiples leguajes interesantes
 - [Rust](./rust/readme.md)
 - [Windows](./Windows/readme.md)
 - [Cursos](./Learn-Repos/readme.md)
+- [Zig](./zig/readme.md)
 
 ## Stranger things
 

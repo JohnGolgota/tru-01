@@ -100,3 +100,7 @@ go.work
 *.un~
 *.md~
 .gitignore~
+
+# Zig
+zig-cache
+zig-out
