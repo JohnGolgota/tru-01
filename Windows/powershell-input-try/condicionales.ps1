@@ -9,3 +9,18 @@ elseif ($Selected_Option -eq '2') {
 else {
     Write-Host "Graciosito eh?"
 }
+$Introducir_Nombres = Read-Host -Prompt 'escribir nombres? (S)'
+if ($Introducir_Nombres -eq 's') {
+    $Data_B = @()
+    while ($Introducir_Nombres -eq 's') {
+
+        $Data_B += Read-Host -Prompt 'Nombre de una base de datos'
+        $Introducir_Nombres = Read-Host -Prompt 'escribir nombres? (S)'
+
+    }
+    $Data_B | ForEach-Object {
+        Write-Host "$_"
+    }
+}
+
+Write-Host "$Selected_Option"
