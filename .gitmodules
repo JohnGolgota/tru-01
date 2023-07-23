@@ -1,0 +1,3 @@
+[submodule "zig/img-viewer/libs/raylib"]
+	path = zig/img-viewer/libs/raylib
+	url = https://github.com/CodesOtakuYT/raylib.git
