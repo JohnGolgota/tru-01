@@ -9,8 +9,10 @@
 
 ## proyectos
 
-- [rust api client](../rust-api-client/README.md)
-- [rust tama gochi](../Rust-Huevo/README.md)
+### proyectos en progreso (si solo tengo en progreso)
+
+- [rust api client](./rust-api-client/README.md)
+- [rust tama gochi](./Rust-Huevo/README.md)
 
 ## protyectos pendientes
 
@@ -18,6 +20,4 @@
 
 ## Frameworks
 
-### [Tauri](https://tauri.app/)
-
-integracion de rust con node js para la creacion de aplicaciones de escritorio multiplataforma.
+[Tauri](https://tauri.app/) integracion de rust con node js para la creacion de aplicaciones de escritorio multiplataforma.

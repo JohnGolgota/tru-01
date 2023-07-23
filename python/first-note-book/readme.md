@@ -2,7 +2,9 @@
 
 [volver](../readme.md)
 
-Primer y quiza unico intento de hacer un CRUD de mysql con Python, Conociendo lo basico de pandas
+Primer y quiza unico intento de hacer un CRUD de mysql con Python
+
+Conociendo lo basico de pandas
 
 interacciones con el sistema operativo
 
