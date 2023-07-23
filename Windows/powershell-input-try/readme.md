@@ -2,6 +2,8 @@
 
 [volver](../readme.md)
 
+Inicie esto por necesidad, pero a la mitad me di cuenta de que podría haberlo hecho en Python... Bobo HP...
+
 ## programita para hacer backups de bases de datos mysql
 
 ### docs

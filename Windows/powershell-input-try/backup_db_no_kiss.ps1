@@ -62,6 +62,6 @@ function Make_BackupFromTextFile {
         Make_BackupFromArray -DataBasesArrayParam $item_content
     }
     else {
-        Write-Host "can't find database list"
+        Write-Host "can't find database list names"
     }
 }
