@@ -1,78 +1,53 @@
-# Version Windows: Windows 10
-
-# Determina la direccion de MySQL en el dispositivo
 $MYSQL_DIR = "C:\xampp\mysql"
-# Direccion Completa de la carpeta output para el resultado del backup
 $BACKUP_FOLDER = "back_up_folder"
-
-# Determinamos la fecha con el formato mas comodo para manipular los archivos.
-# Cual? cualquier formato de fecha que no sea estado unidense
 $BACKUPDATE = Get-Date -Format "dd-MM-yyyy"
-
-# Credenciales de la base de datos MySQL
-$dbuser = 'data_base_user'
-$dbpass = 'data_base_password'
-
-$Selected_Option = Read-Host -Prompt "Elige: Bases de datos escritas; '1' o Todas; '2'"
-# Lista de bases de datos a importar desde MySQL (opcion 1)
-$DATA_BASES = "base_de_datos_1", "base_de_datos_2", "base_de_datos_3", "base_de_datos_4", "base_de_datos_5"
-# (Opcion 1)
-if ($Selected_Option -eq '1') {
-    Make_Backup_From_Array -ArrayDataBases $DATA_BASES
+$DB_USER = 'data_base_user'
+$DB_PASS = 'data_base_password'
+$DATA_BASES = "db_1", "db_2", "db_3", "db_4", "db_5"
+$selected_option = Read-Host -Prompt "Choose: pre-database; '1' for all databases; '2'"
+if ($selected_option -eq '1') {
+    Make_BackupFromArray -DataBasesArrayParam $DATA_BASES
 }
-# (opcion 2)
-elseif ($Selected_Option -eq '2') {
-    Make_All_Databases_Backup
+elseif ($selected_option -eq '2') {
+    Make_AllDatabasesBackup
 }
 else {
-    Write-Host "Che comediante encontre tu ciudad natal:`nhttps://www.google.com/maps/place/Alta+Gracia,+C%C3%B3rdoba,+Argentina/@-31.6555372,-64.4412516,13z/data=!3m1!4b1!4m6!3m5!1s0x942d574ade89939b:0x5290b7919d5d43fd!8m2!3d-31.6584428!4d-64.4273429!16zL20vMDQ3cWNi?entry=ttu"
-    $Introducir_Nombres = Read-Host -Prompt "`nescribir nombres? (S)"
-    if ($Introducir_Nombres -eq 's') {
-        $Data_B = @()
-        while ($Introducir_Nombres -eq 's') {
-    
-            $Data_B += Read-Host -Prompt 'Nombre de una base de datos'
-            $Introducir_Nombres = Read-Host -Prompt "`nescribir nombres? (S)"
-    
+    $do_in_names = Read-Host -Prompt "`nwrite database name? (Y)"
+    if ($do_in_names -eq 'y') {
+        $db_user_chose = @()
+        while ($do_in_names -eq 'y') {
+            $db_user_chose += Read-Host -Prompt 'database name'
+            $do_in_names = Read-Host -Prompt "`nwrite database name? (Y)"
         }
-        Make_Backup_From_Array -ArrayDataBases $Data_B
+        Make_BackupFromArray -DataBasesArrayParam $db_user_chose
     }
 }
-function Make_Backup_From_Array {
+function Make_BackupFromArray {
     param (
-        $ArrayDataBases
+        $DataBasesArrayParam
     )
     try {
-        # Nos Posisionamos el la direccion del dispositivo en la que este mysqldump.exe
-        # con base a la direccion general de MySQL
         Set-Location "$MYSQL_DIR\bin"
-        # Recorremos el array con las bases de datos
-        $ArrayDataBases | ForEach-Object {
-            # Por esto necesitamos las direcciones completas del .exe de mysql y la carpeta output
-            .\mysqldump.exe -u $dbuser -p $dbpass $_ > "$BACKUP_FOLDER\${_}($BACKUPDATE).sql"
+        $DataBasesArrayParam | ForEach-Object {
+            .\mysqldump.exe -u $DB_USER -p $DB_PASS $_ > "$BACKUP_FOLDER\${_}($BACKUPDATE).sql"
+            Write-Host "export db $_"
         }
     }
     catch {
-        # Queria usar un try catch no te voy a mentir
-        Write-Error "Ups... valio verg..."
+        Write-Error "ups..."
         Write-Host $_
     }
 }
-function Make_All_Databases_Backup {
+function Make_AllDatabasesBackup {
     try {
-        # Parecido al anterior pero...
         Set-Location "$MYSQL_DIR\bin"
-        # El array que recorremos en este caso es una consulta directa a la base de datos.
-        # Traera un error porque intenta inportar el titulo de la lista que retorna MySQL.
-        # Y tambiem inportara todas las otras bases de datos propias de MySQL
-        .\mysql.exe -u $dbuser -e 'show databases' | ForEach-Object {
-            # El resto funciona igual
-            # Por esto necesitamos las direcciones completas del .exe de mysql y la carpeta output
-            .\mysqldump.exe -u $dbuser -p $dbpass $_ > "$BACKUP_FOLDER\${_}($BACKUPDATE).sql"
+        .\mysql.exe -u $DB_USER -e 'show databases' | ForEach-Object {
+            .\mysqldump.exe -u $DB_USER -p $DB_PASS $_ > "$BACKUP_FOLDER\${_}($BACKUPDATE).sql"
+            Write-Host "export db $_"
         }
     }
     catch {
-        Write-Host "error men"
+        Write-Host "error"
         Write-Error $_
     }    
 }
