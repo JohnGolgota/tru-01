@@ -1,4 +1,8 @@
+# Version Windows: Windows 10
+
+# Determina la direccion de mysql en el dispositivo
 $MYSQL_DIR = "C:\xampp\mysql"
+# Direccion Completa de la carpeta output para 
 $BACKUP_FOLDER = "back_up"
 
 $BACKUPDATE = Get-Date -Format "dd-MM-yyyy"
