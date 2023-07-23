@@ -1,10 +1,10 @@
-$MYSQL_DIR = "C:\xampp\mysql"
-$BACKUP_FOLDER = "back_up_folder"
+$MYSQL_DIR = "mysql"
+$BACKUP_FOLDER = "backupfolder"
 $BACKUPDATE = Get-Date -Format "dd-MM-yyyy"
-$DB_USER = 'data_base_user'
-$DB_PASS = 'data_base_password'
-$DATA_BASES = "db_1", "db_2", "db_3", "db_4", "db_5"
-$selected_option = Read-Host -Prompt "Choose: pre-database; '1' for all databases; '2'"
+$DB_USER = 'user'
+$DB_PASS = 'pass'
+$DATA_BASES = "db_1", "db_2"
+$selected_option = Read-Host -Prompt "Choose: pre-database; '1' for all databases; '2' from file; '3' write names one by one; 4"
 switch ($selected_option) {
     '1' { Make_BackupFromArray -DataBasesArrayParam $DATA_BASES }
     '2' { Make_AllDatabasesBackup }
@@ -24,6 +24,8 @@ switch ($selected_option) {
         }
     }
 }
+
+Write-Host "(End)"
 function Make_BackupFromArray {
     param (
         $DataBasesArrayParam

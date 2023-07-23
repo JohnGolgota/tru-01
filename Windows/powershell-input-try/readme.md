@@ -15,3 +15,4 @@
 - [Switch](https://learn.microsoft.com/es-es/powershell/module/microsoft.powershell.core/about/about_switch?view=powershell-7.3)
 - [Functions](https://learn.microsoft.com/es-es/powershell/scripting/learn/ps101/09-functions?view=powershell-7.3)
 - [Types](https://learn.microsoft.com/es-es/powershell/scripting/lang-spec/chapter-04?view=powershell-7.3)
+- [Get-Content](https://learn.microsoft.com/es-es/powershell/module/microsoft.powershell.management/get-content?view=powershell-7.3)
