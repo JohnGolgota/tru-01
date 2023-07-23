@@ -6,5 +6,4 @@
 
 ### In Progress
 
-- [Learn PowerShell](./powershell-input-try)
-
+- [Learn PowerShell](./powershell-input-try/readme.md)
