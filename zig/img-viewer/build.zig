@@ -1,4 +1,5 @@
 const std = @import("std");
+const raylib_build = @import("libs/raylib/src/build.zig")
 
 pub fn build(b: *std.build.Builder) void {
     // Standard target options allows the person running `zig build` to choose
@@ -11,9 +12,12 @@ pub fn build(b: *std.build.Builder) void {
     // between Debug, ReleaseSafe, ReleaseFast, and ReleaseSmall.
     const mode = b.standardReleaseOptions();
 
+    const raylib = raylib_build.addRaylib(b, target, mode )
+
     const exe = b.addExecutable("img-viewer", "src/main.zig");
     exe.setTarget(target);
     exe.setBuildMode(mode);
+    exe.linkLibrary(raylib);
     exe.install();
 
     const run_cmd = exe.run();

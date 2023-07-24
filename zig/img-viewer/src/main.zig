@@ -1,5 +1,4 @@
 const std = @import("std");
-const reylib_build = @import("libs/raylib/src/build.zig")
 
 pub fn main() !void {
     // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
