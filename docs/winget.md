@@ -24,7 +24,9 @@ winget install --id GlavSoft.TightVNC --source winget -e;
 winget install --id AnyDeskSoftwareGmbH.AnyDesk --source winget -e;
 winget install --id Microsoft.Teams --source winget -e;
 
-winget install --id ApacheFriends.Xampp.8.2 --source winget -e; 
+winget install --id ApacheFriends.Xampp.8.2 --source winget -e;
+
+wsl --install --distribution Debian
 
 ```
 ## 
