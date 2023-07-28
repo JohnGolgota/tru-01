@@ -12,6 +12,7 @@ winget install --id Yarn.Yarn --source winget -e;
 winget install --id GoLang.Go --source winget -e;
 winget install --id zig.zig --source winget -e;
 winget install --id Alacritty.Alacritty --source winget -e;
+winget install --id Docker.DockerDesktop --source winget -e;
 winget install --id OpenJS.NodeJS --source winget -e;
 winget install --id Google.AndroidStudio --source winget -e;
 
