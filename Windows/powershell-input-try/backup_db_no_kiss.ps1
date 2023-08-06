@@ -1,3 +1,42 @@
+function Make_BackupFromArray {
+    param (
+        $DataBasesArrayParam
+    )
+    try {
+        Set-Location "$MYSQL_DIR\bin"
+        $DataBasesArrayParam | ForEach-Object {
+            .\mysqldump -u $DB_USER -p$DB_PASS $_ > "$BACKUP_FOLDER\${_}($BACKUPDATE).sql"
+            Write-Host "export db $_"
+        }
+    }
+    catch {
+        Write-Error "ups..."
+        Write-Host $_
+    }
+}
+function Make_AllDatabasesBackup {
+    try {
+        Set-Location "$MYSQL_DIR\bin"
+        .\mysql.exe -u $DB_USER -p$DB_PASS -e 'show databases' | ForEach-Object {
+            .\mysqldump -u $DB_USER -p$DB_PASS $_ > "$BACKUP_FOLDER\${_}($BACKUPDATE).sql"
+            Write-Host "export db $_"
+        }
+    }
+    catch {
+        Write-Host "error"
+        Write-Error $_
+    }
+}
+function Make_BackupFromTextFile {
+    $item = Read-Host -Prompt "Drag and drop file here"
+    $item_content = Get-Content $item
+    if ($item_content -is [array]) {
+        Make_BackupFromArray -DataBasesArrayParam $item_content
+    }
+    else {
+        Write-Host "can't find database list names"
+    }
+}
 $MYSQL_DIR = "mysql"
 $BACKUP_FOLDER = "backupfolder"
 $BACKUPDATE = Get-Date -Format "dd-MM-yyyy"
@@ -26,42 +65,3 @@ switch ($selected_option) {
 }
 
 Write-Host "(End)"
-function Make_BackupFromArray {
-    param (
-        $DataBasesArrayParam
-    )
-    try {
-        Set-Location "$MYSQL_DIR\bin"
-        $DataBasesArrayParam | ForEach-Object {
-            .\mysqldump.exe -u $DB_USER -p $DB_PASS $_ > "$BACKUP_FOLDER\${_}($BACKUPDATE).sql"
-            Write-Host "export db $_"
-        }
-    }
-    catch {
-        Write-Error "ups..."
-        Write-Host $_
-    }
-}
-function Make_AllDatabasesBackup {
-    try {
-        Set-Location "$MYSQL_DIR\bin"
-        .\mysql.exe -u $DB_USER -e 'show databases' | ForEach-Object {
-            .\mysqldump.exe -u $DB_USER -p $DB_PASS $_ > "$BACKUP_FOLDER\${_}($BACKUPDATE).sql"
-            Write-Host "export db $_"
-        }
-    }
-    catch {
-        Write-Host "error"
-        Write-Error $_
-    }    
-}
-function Make_BackupFromTextFile {
-    $item = Read-Host -Prompt "Drag and drop file here"
-    $item_content = Get-Content $item
-    if ($item_content -is [array]) {
-        Make_BackupFromArray -DataBasesArrayParam $item_content
-    }
-    else {
-        Write-Host "can't find database list names"
-    }
-}

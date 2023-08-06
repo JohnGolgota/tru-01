@@ -49,6 +49,7 @@ Cargo.lock
 .nuxt
 .nitro
 .cache
+package-lock.json
 
 # Logs
 logs
@@ -101,6 +102,7 @@ go.work
 *.un~
 *.md~
 .gitignore~
+*.code-workspace~
 
 # Zig
 zig-cache
