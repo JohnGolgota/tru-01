@@ -12,6 +12,7 @@
 *.njsproj
 *.sln
 *.sw?
+/*/*/.editorconfig
 
 # Local env files
 .env
