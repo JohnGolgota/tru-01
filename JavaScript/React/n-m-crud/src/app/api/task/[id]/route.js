@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/utils/mongoose";
 import task from "@/models/task";
+import { data } from "autoprefixer";
 // TODO Piensa en como no depender de next para el api. me lo debo, tambien re-orientar otras apis creadas por mi.
 
 export async function GET(request, { params }) {
@@ -13,7 +14,8 @@ export async function GET(request, { params }) {
 			return NextResponse.json({
 				method,
 				mensaje: "Tarea no encontrada",
-				taskFound
+				taskFound,
+				debbug: [request, params]
 			}, {
 				status: 404
 			})
@@ -29,6 +31,7 @@ export async function GET(request, { params }) {
 			method,
 			mensaje: "Error al Buscar",
 			message: error.message,
+			debbug: [params, request],
 			error
 		}, {
 			status: 400
@@ -43,12 +46,11 @@ export async function PUT(request, { params }) {
 		const taskUpdated = await task.findByIdAndUpdate(params.id, data, {
 			new: true
 		})
-		// FIXME sigue sin servir
 		if (taskUpdated === null) {
 			return NextResponse.json({
 				mensaje: "Tarea no encontrada",
 				method,
-				debug: [data, request, params]
+				debbug: [data, request, params]
 			}, {
 				status: 404
 			})
@@ -57,14 +59,15 @@ export async function PUT(request, { params }) {
 			mensaje: `geting task for update... ${params.id}`,
 			method,
 			taskUpdated,
-			debug: [data, request, params]
+			debbug: [data, request, params]
 		})
 	} catch (error) {
 		return NextResponse.json({
 			mensaje: "No se pudo actualizar",
 			method,
 			message: error.message,
-			error
+			error,
+			debbug: [request, params]
 		}, {
 			status: 400
 		})
@@ -73,15 +76,33 @@ export async function PUT(request, { params }) {
 export async function DELETE(request, { params }) {
 	const method = "DELETE"
 	try {
-		const data = await request.json()
+		connectDB()
+
+		const taskDeleted = await task.findByIdAndDelete(params.id)
+		if (taskDeleted === null) {
+			return NextResponse.json({
+				mensaje: "Tarea no encontrada",
+				method,
+				debbug: [request, params]
+			}, {
+				status: 404
+			})
+		}
+		return NextResponse.json({
+			mensaje: `Deleted... ${params.id}`,
+			method,
+			taskDeleted,
+			debbug: [request, params]
+		})
 	} catch (error) {
 		return NextResponse.json({
+			mensaje: "No se pudo borrar",
 			method,
-			mensaje: "Fallo al intentar eliminar",
-			debbug: [params, request]
+			message: error.message,
+			error,
+			debbug: [request, params]
 		}, {
 			status: 400
 		})
 	}
-
 }
