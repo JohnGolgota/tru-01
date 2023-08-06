@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.colorTheme": "Night Owl Light",
+		"workbench.iconTheme": "icons",
+	}
+}
