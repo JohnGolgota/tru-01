@@ -2,9 +2,11 @@ import { NextResponse } from "next/server";
 import { connectDB } from "@/utils/mongoose";
 import Blog from "@/models/task";
 
-export function GET() {
+export async function GET() {
+	connectDB()
+	const tasks = await Blog.find()
 	return NextResponse.json({
-		mensaje: "geting task..."
+		tasks
 	})
 }
 export async function POST(request) {
@@ -12,7 +14,6 @@ export async function POST(request) {
 		const data = await request.json()
 		const task = new Blog(data)
 		const savetask = await task.save()
-		// connectDB()
 		return NextResponse.json({
 			mensaje: `insert task...`,
 			action: "Insert task",
