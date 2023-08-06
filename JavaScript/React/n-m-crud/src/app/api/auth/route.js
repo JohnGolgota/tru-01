@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
-// TODO Piensa en como no depender de next para el api. me lo debo, tambien re-orientar otras apis creadas por mi.
+import { connectDB } from "@/utils/mongoose";
+
 export function GET() {
+	connectDB()
 	return NextResponse.json({
-		mensaje: "Hola mas facil api del mundo"
+		mensaje: "Me voy a pegar un tiro en la boca"
 	})
 }
