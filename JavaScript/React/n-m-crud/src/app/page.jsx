@@ -11,7 +11,6 @@ async function HomePage() {
 	const tasks = await loadTask()
 	return (
 		<div>
-			<h1>HomePage</h1>
 			<div className={StylesPage.page}>
 				{tasks.map(task => (
 					<TaskCard task={task} key={task._id} />

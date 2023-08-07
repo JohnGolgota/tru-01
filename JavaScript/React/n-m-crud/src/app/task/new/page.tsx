@@ -15,8 +15,6 @@ function FormPage() {
 			method: "GET"
 		})
 		const data = await res.json()
-		console.log("🚀 ~ file: page.tsx:18 ~ getTask ~ data:", data)
-
 		setNewTask({
 			title: data.taskFound.title,
 			body: data.taskFound.body
@@ -90,9 +88,9 @@ function FormPage() {
 		}
 	}
 	useEffect(() => {
-		params
-		console.log("🚀 ~ file: page.tsx:44 ~ useEffect ~ params:", params)
-		getTask()
+		if (params.id) {
+			getTask()
+		}
 	}, [])
 	return (
 		<div className={styles.sub_form}>

@@ -22,3 +22,26 @@ body {
 	color: rgb(var(--foreground-rgb));
 	background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
+
+.section_not_found {
+	height: calc(100vh - 7rem);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.section_not_found_num {
+	display: block;
+	font-size: 4.5rem;
+	line-height: 1;
+	font-weight: 700;
+}
+
+.section_not_found_text {
+	color: rgb(203 213 225 / 1);
+	margin-top: 1.25rem;
+	margin-bottom: 1.25rem;
+	font-size: 1.875rem;
+	line-height: 2.25rem;
+}
