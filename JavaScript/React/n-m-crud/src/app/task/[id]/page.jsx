@@ -1,8 +1,3 @@
-function TaskCard() {
-	return (
-		<div>
-			help
-		</div>
-	)
-}
-export default TaskCard
+import Form from "@/app/task/new/page";
+
+export default Form;
