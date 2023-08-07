@@ -1,18 +1,27 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/utils/mongoose";
-import Blog from "@/models/task";
+import Task from "@/models/task";
 
 export async function GET() {
-	connectDB()
-	const tasks = await Blog.find()
-	return NextResponse.json({
-		tasks
-	})
+	try {
+		connectDB()
+		const tasks = await Task.find()
+		return NextResponse.json({
+			tasks
+		})
+	} catch (error) {
+		return NextResponse.json({
+			error,
+			mensaje: "JODERRRRRRRRRRRRRR",
+		}, {
+			status: 500
+		})
+	}
 }
 export async function POST(request) {
 	try {
 		const data = await request.json()
-		const task = new Blog(data)
+		const task = new Task(data)
 		const savetask = await task.save()
 		return NextResponse.json({
 			mensaje: `insert task...`,

@@ -1,6 +1,6 @@
 import { Schema, model, models } from "mongoose";
 
-const blogSchema = new Schema({
+const taskSchema = new Schema({
 	title: {
 		type: String,
 		required: [true, 'a?'],
@@ -24,4 +24,4 @@ const blogSchema = new Schema({
 	timestamps: true
 });
 
-export default models.Blog || model("Blog", blogSchema)
+export default models.Task || model("Task", taskSchema)

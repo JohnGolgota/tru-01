@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/utils/mongoose";
 import task from "@/models/task";
-import { data } from "autoprefixer";
 // TODO Piensa en como no depender de next para el api. me lo debo, tambien re-orientar otras apis creadas por mi.
 
 export async function GET(request, { params }) {
