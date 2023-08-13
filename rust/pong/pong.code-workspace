@@ -4,5 +4,8 @@
             "path": "."
         }
     ],
-    "settings": {}
+    "settings": {
+        "rust-analyzer.linkedProjects": [],
+        "rust-analyzer.showUnlinkedFileNotification": false
+    }
 }
