@@ -1,3 +1,6 @@
+pub mod cat;
+use cat::{CatStatus, Cat as OtherCat};
+
 use rand::prelude::*;
 use std::io::{self};
 use std::sync::mpsc;
@@ -41,6 +44,13 @@ fn main() {
        /|_|_|\__/
     "#,
     ];
+    let kato_muerto = r#"
+        /\_/\
+       / x x \
+       \¨ ^ ¨/
+        /   \    _
+       /|_|_|\__/
+    "#;
 
     let mut _msg = String::default();
     const MILLIS: u64 = 500;
@@ -60,11 +70,13 @@ fn main() {
         ),
     };
 
-    let mut cat1 = Cat {
-        name: String::from("pedrito"),
-        status: CatStatus::Alive,
-        stats: Stats::new(), // pero no se usar los metodos xs
-    };
+    // let mut cat1 = Cat {
+    //     name: String::from("pedrito"),
+    //     status: CatStatus::Alive,
+    //     stats: Stats::new(), // pero no se usar los metodos xs
+    // };
+
+    let mut cat1 = OtherCat::new(String::from("pedrito"));
 
     let (tx, rx) = mpsc::channel();
 
@@ -76,15 +88,7 @@ fn main() {
 
     for frame in frames.iter().cycle() {
         if cat1.status == CatStatus::Death {
-            print!(
-                r#"
-            /\_/\
-           / x x \
-           \¨ ^ ¨/
-            /   \    _
-           /|_|_|\__/
-        "#,
-            );
+            print!("{} \nRIP {}", kato_muerto, cat1.name);
             break;
         }
         _num = randnum();
@@ -111,7 +115,7 @@ fn main() {
 
         if seleccion == "1" {
             // Al aumentar hambre disminnuye vida
-            cat1.stats.feed();
+            cat1.feed();
         }
 
         print!("Vida -> {}\n", cat1.stats.health);
@@ -130,7 +134,7 @@ fn main() {
             }
         }
         thread::sleep(time::Duration::from_millis(MILLIS));
-        // clear_terminal();
+        clear_terminal();
         // no se espera
     }
     input_thread.join().unwrap();
@@ -138,12 +142,6 @@ fn main() {
 
 fn clear_terminal() {
     print!("\x1B[2J\x1B[1;1H");
-}
-
-fn randnum() -> u8 {
-    let rand_number: u8 = rand::thread_rng().gen_range(1..=10);
-
-    rand_number
 }
 
 fn input(enter: bool) -> String {
@@ -182,6 +180,12 @@ pub fn trim_with_carriagereturn(input: String) -> String {
     input.replace("\r", "").trim().to_string()
 }
 
+fn randnum() -> u8 {
+    let rand_number: u8 = rand::thread_rng().gen_range(1..=10);
+
+    rand_number
+}
+
 struct Menu {
     options: String, // "
                      //     +---------------+
@@ -205,84 +209,8 @@ struct Menu {
                      //         _ =>   { println!("Invalid Option")}
                      //     }
                      // }
-} // wtf!? pregunto a ia
-#[derive(Debug, PartialEq, Eq)]
-enum CatStatus {
-    Alive,
-    Sick,
-    Death,
 }
 
-// impl PartialEq for CatStatus{
-//     fn eq(&self, _: &CatStatus) -> bool { todo!() }
-// }
-
-struct Cat {
-    name: String,
-    // status: String,
-    status: CatStatus, // pero agregar aqui
-    stats: Stats,      // cuando se implemente
-                       // alive: bool
-}
-
-// trait Status {
-//     fn calculatestatus(&self) -> String{
-//         let yomama = String::default();
-//         yomama
-//     }
-// }
-
-impl Cat {
-    fn check_status(&mut self) {
-        // donde deberia estar el tick en esto o en el loop arriba?
-        let health = self.stats.health; // no
-        if health == 0 {
-            // self.status = String::from("death"); // no necesita returns
-            self.status = CatStatus::Death;
-        } else if health > 0 && health < 50 {
-            // self.status = String::from("sick"); // no necesita returns
-            self.status = CatStatus::Sick;
-        } else {
-            // self.status = String::from("Alive"); // *carita sonrojada*
-            self.status = CatStatus::Alive;
-        }
-    }
-    // como es vivir?
-    fn live(&mut self) {
-        // da hambre sip esa es la idea
-        self.stats.tick(); // tenes copilot o que es lo que auto completa?
-    }
-}
-
-struct Stats {
-    health: u8,
-    hambre: u8,
-    // dream on: u8,
-    // tired: u8,
-}
-
-impl Stats {
-    fn new() -> Stats {
-        // por ahora eso
-        Stats {
-            health: 20, // si com lo estopeamos? si llega a cero bueno
-            hambre: 10,  // no
-        }
-    }
-    fn feed(&mut self) {
-        self.hambre -= 5;
-    }
-    fn tick(&mut self) {
-        if self.health > 0 {
-            self.health -= 1;
-            let _num = randnum();
-            if _num % 2u8 == 0 {
-                self.hambre += 1;
-            }
-            // self.hambre += 1;
-        }
-    }
-}
 
 // use std::io;
 // use std::thread;
