@@ -1,13 +1,10 @@
+pub mod cat;
+use cat::{CatStatus, Cat as OtherCat};
+
 use rand::prelude::*;
 use std::io::{self};
-use std::sync::{mpsc, Arc, Mutex};
+use std::sync::mpsc;
 use std::{thread, time};
-// use std::collections::HashMap;
-// use std::io::{Write, stdout};
-// use crossterm::{
-//     style::{self, Stylize},
-//     QueueableCommand,
-// };
 
 fn main() {
     let frames = [
@@ -47,6 +44,13 @@ fn main() {
        /|_|_|\__/
     "#,
     ];
+    let kato_muerto = r#"
+        /\_/\
+       / x x \
+       \¨ ^ ¨/
+        /   \    _
+       /|_|_|\__/
+    "#;
 
     let mut _msg = String::default();
     const MILLIS: u64 = 500;
@@ -66,39 +70,27 @@ fn main() {
         ),
     };
 
-    let mut cat1 = Cat {
-        name: String::from("pedrito"),
-        // status: String::from("alive"),
-        status: CatStatus::Alive,
-        stats: Stats::new(), // pero no se usar los metodos xs
-    };
+    // let mut cat1 = Cat {
+    //     name: String::from("pedrito"),
+    //     status: CatStatus::Alive,
+    //     stats: Stats::new(), // pero no se usar los metodos xs
+    // };
+
+    let mut cat1 = OtherCat::new(String::from("pedrito"));
 
     let (tx, rx) = mpsc::channel();
 
-    // let tx = Arc::new(Mutex::new(tx));
     let input_thread = thread::spawn(move || {
-        // let mut selection = String::new();
         println!("Que quieres hacer?");
-        // let result = input(false);
-        let mut result = String::default();
-        io::stdin().read_line(&mut result).expect("No se pudo leer el input");
-        // let kk = tx.lock().unwrap();
+        let result = input(false); // stdin:
         tx.send(result).unwrap();
     });
 
     for frame in frames.iter().cycle() {
-        // if cat1.status == CatStatus::Death {
-        //     print!(
-        //         r#"
-        //     /\_/\
-        //    / x x \
-        //    \¨ ^ ¨/
-        //     /   \    _
-        //    /|_|_|\__/
-        // "#,
-        //     );
-        //     break;
-        // }
+        if cat1.status == CatStatus::Death {
+            print!("{} \nRIP {}", kato_muerto, cat1.name);
+            break;
+        }
         _num = randnum();
         // En cada siclo sube el hambre
         cat1.live();
@@ -107,45 +99,30 @@ fn main() {
         } else {
             _msg = String::from("meaw");
         }
-        // y cuando se alimente baja y se muere si sube mucho el hambre
+
+        print!("{}", menu1.options);
         print!("{}", frame);
-
         println!("\n{}", _msg);
-        // let mut stdout = stdout();
-        // stdout.queue(style::PrintStyledContent( "█".magenta())).expect("NO SIRVE");
-        thread::sleep(time::Duration::from_millis(MILLIS));
-        clear_terminal();
-        // println!("Hello, world!");
 
-        // Receive the result from the channel
-        // let kk = String::from("NO ESTA LLEGANDO ESA MONDA");
-        
-        let slct = rx.recv();
-        print!("MESSAGE: {:?}", slct);
-        // if let Ok(result) = rx.try_recv() {
-        //     // Clone the result if needed
-        //     let cloned_result = result.clone();
-        //     println!("Received result from the input thread: {}", cloned_result);
-        // }
-        
-        // print!("{}",menu1.options);
-        // let option = input(false);
+        // let valorrecivido = rx.try_recv();
 
-        // if selection == "3" {
-        //     cat1.stats.health -= 25;
-        // }
+        let seleccion = rx.try_recv().unwrap_or("MELAPELAS".to_string());
+        print!("Input -> {:?} \n", seleccion);
 
-        // if selection == "1" {
-        //     // Al aumentar hambre disminnuye vida
-        //     cat1.stats.feed();
-        // }
+        if seleccion == "3" {
+            cat1.stats.health -= 25;
+        }
+
+        if seleccion == "1" {
+            // Al aumentar hambre disminnuye vida
+            cat1.feed();
+        }
 
         print!("Vida -> {}\n", cat1.stats.health);
         print!("Hambre -> {}\n", cat1.stats.hambre);
-        cat1.check_status(); // ewso ya lo hiciste
+        cat1.check_status(); // Checkea el estado del Kato en base a la vida
 
         match cat1.status {
-            // "death" => { println!("Tu Kato se fallecio! :(")},
             CatStatus::Alive => {
                 println!("Tu Kato esta vivo! :)")
             }
@@ -156,7 +133,8 @@ fn main() {
                 println!("Tu Kato se fallecio! :(")
             }
         }
-
+        thread::sleep(time::Duration::from_millis(MILLIS));
+        clear_terminal();
         // no se espera
     }
     input_thread.join().unwrap();
@@ -164,12 +142,6 @@ fn main() {
 
 fn clear_terminal() {
     print!("\x1B[2J\x1B[1;1H");
-}
-
-fn randnum() -> u8 {
-    let rand_number: u8 = rand::thread_rng().gen_range(1..=10);
-
-    return rand_number;
 }
 
 fn input(enter: bool) -> String {
@@ -208,6 +180,12 @@ pub fn trim_with_carriagereturn(input: String) -> String {
     input.replace("\r", "").trim().to_string()
 }
 
+fn randnum() -> u8 {
+    let rand_number: u8 = rand::thread_rng().gen_range(1..=10);
+
+    rand_number
+}
+
 struct Menu {
     options: String, // "
                      //     +---------------+
@@ -231,81 +209,8 @@ struct Menu {
                      //         _ =>   { println!("Invalid Option")}
                      //     }
                      // }
-} // wtf!? pregunto a ia
-#[derive(Debug, PartialEq, Eq)]
-enum CatStatus {
-    Alive,
-    Sick,
-    Death,
 }
 
-// impl PartialEq for CatStatus{
-//     fn eq(&self, _: &CatStatus) -> bool { todo!() }
-// }
-
-struct Cat {
-    name: String,
-    // status: String,
-    status: CatStatus, // pero agregar aqui
-    stats: Stats,      // cuando se implemente
-                       // alive: bool
-}
-
-// trait Status {
-//     fn calculatestatus(&self) -> String{
-//         let yomama = String::default();
-//         yomama
-//     }
-// }
-
-impl Cat {
-    fn check_status(&mut self) {
-        // donde deberia estar el tick en esto o en el loop arriba?
-        let health = self.stats.health; // no
-        if health == 0 {
-            // self.status = String::from("death"); // no necesita returns
-            self.status = CatStatus::Death;
-        }
-        if health > 0 && health < 50 {
-            // self.status = String::from("sick"); // no necesita returns
-            self.status = CatStatus::Sick;
-        } else {
-            // self.status = String::from("Alive"); // *carita sonrojada*
-            self.status = CatStatus::Alive;
-        }
-    }
-    // como es vivir?
-    fn live(&mut self) {
-        // da hambre sip esa es la idea
-        self.stats.tick(); // tenes copilot o que es lo que auto completa?
-    }
-}
-
-struct Stats {
-    health: u8,
-    hambre: u8,
-    // dream on: u8,
-    // tired: u8,
-}
-
-impl Stats {
-    fn new() -> Stats {
-        // por ahora eso
-        Stats {
-            health: 20, // si com lo estopeamos? si llega a cero bueno
-            hambre: 0,  // no
-        }
-    }
-    fn feed(&mut self) {
-        self.hambre -= 1;
-    }
-    fn tick(&mut self) {
-        if self.health > 0 {
-            self.health -= 1;
-            self.hambre += 1;
-        }
-    }
-}
 
 // use std::io;
 // use std::thread;
