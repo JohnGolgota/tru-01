@@ -1,143 +1,158 @@
 {
-	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-10-14T10:23:12.196-00:00",
-	"Sources" : 
-	[
+	"$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+	"CreationDate": "2023-10-14T10:23:12.196-00:00",
+	"Sources": [
 		{
-			"Packages" : 
-			[
+			"Packages": [
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudio.2022.Community"
+					"PackageIdentifier": "GitHub.GitHubDesktop"
 				},
 				{
-					"PackageIdentifier" : "CoreyButler.NVMforWindows"
+					"PackageIdentifier": "Microsoft.VisualStudioCode.Insiders"
 				},
 				{
-					"PackageIdentifier" : "Notion.Notion"
+					"PackageIdentifier": "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "Google.AndroidStudio"
+					"PackageIdentifier": "Microsoft.VisualStudio.2022.Community"
 				},
 				{
-					"PackageIdentifier" : "dbeaver.dbeaver"
+					"PackageIdentifier": "CoreyButler.NVMforWindows"
 				},
 				{
-					"PackageIdentifier" : "Docker.DockerDesktop"
+					"PackageIdentifier": "Notion.Notion"
 				},
 				{
-					"PackageIdentifier" : "Git.Git"
+					"PackageIdentifier": "Google.AndroidStudio"
 				},
 				{
-					"PackageIdentifier" : "GitHub.GitHubDesktop"
+					"PackageIdentifier": "dbeaver.dbeaver"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PCManager"
+					"PackageIdentifier": "Docker.DockerDesktop"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.Edge"
+					"PackageIdentifier": "Microsoft.PCManager"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DevHome"
+					"PackageIdentifier": "Microsoft.Edge"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsTerminal"
+					"PackageIdentifier": "Microsoft.DevHome"
 				},
 				{
-					"PackageIdentifier" : "MongoDB.Compass.Full"
+					"PackageIdentifier": "Microsoft.WindowsTerminal"
 				},
 				{
-					"PackageIdentifier" : "OBSProject.OBSStudio"
+					"PackageIdentifier": "MongoDB.Compass.Full"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.OneDrive"
+					"PackageIdentifier": "OBSProject.OBSStudio"
 				},
 				{
-					"PackageIdentifier" : "PostgreSQL.PostgreSQL"
+					"PackageIdentifier": "Microsoft.OneDrive"
 				},
 				{
-					"PackageIdentifier" : "Rustlang.Rustup"
+					"PackageIdentifier": "PostgreSQL.PostgreSQL"
 				},
 				{
-					"PackageIdentifier" : "Valve.Steam"
+					"PackageIdentifier": "Rustlang.Rustup"
 				},
 				{
-					"PackageIdentifier" : "vim.vim"
+					"PackageIdentifier": "Valve.Steam"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudio.2022.BuildTools"
+					"PackageIdentifier": "Microsoft.VisualStudio.2022.BuildTools"
 				},
 				{
-					"PackageIdentifier" : "Insomnia.Insomnia"
+					"PackageIdentifier": "Insomnia.Insomnia"
 				},
 				{
-					"PackageIdentifier" : "pnpm.pnpm"
+					"PackageIdentifier": "pnpm.pnpm"
 				},
 				{
-					"PackageIdentifier" : "ApacheFriends.Xampp.8.2"
+					"PackageIdentifier": "ApacheFriends.Xampp.8.2"
 				},
 				{
-					"PackageIdentifier" : "Neovim.Neovim"
+					"PackageIdentifier": "Neovim.Neovim"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
+					"PackageIdentifier": "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "Python.Python.3.11"
+					"PackageIdentifier": "Python.Python.3.11"
 				},
 				{
-					"PackageIdentifier" : "GlavSoft.TightVNC"
+					"PackageIdentifier": "GlavSoft.TightVNC"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode.Insiders"
+					"PackageIdentifier": "Python.Launcher"
 				},
 				{
-					"PackageIdentifier" : "Python.Launcher"
+					"PackageIdentifier": "Microsoft.PowerToys"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerToys"
+					"PackageIdentifier": "AnyDeskSoftwareGmbH.AnyDesk"
 				},
 				{
-					"PackageIdentifier" : "AnyDeskSoftwareGmbH.AnyDesk"
+					"PackageIdentifier": "Microsoft.VCRedist.2015+.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+					"PackageIdentifier": "Mobatek.MobaXterm"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
+					"PackageIdentifier": "Logitech.OptionsPlus"
 				},
 				{
-					"PackageIdentifier" : "Mobatek.MobaXterm"
+					"PackageIdentifier": "MongoDB.Server"
 				},
 				{
-					"PackageIdentifier" : "Logitech.OptionsPlus"
+					"PackageIdentifier": "Microsoft.VCRedist.2015+.x64"
 				},
 				{
-					"PackageIdentifier" : "MongoDB.Server"
+					"PackageIdentifier": "RonyShapiro.PasswordSafe"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+					"PackageIdentifier": "Microsoft.XNARedist"
 				},
 				{
-					"PackageIdentifier" : "RonyShapiro.PasswordSafe"
+					"PackageIdentifier": "Microsoft.WindowsSDK.10.0.22000"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.XNARedist"
+					"PackageIdentifier": "GoLang.Go"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsSDK.10.0.22000"
+					"PackageIdentifier": "Discord.Discord"
 				},
 				{
-					"PackageIdentifier" : "GoLang.Go"
+					"PackageIdentifier": "GIMP.GIMP"
+				},
+				{
+					"PackageIdentifier": "rjpcomputing.luaforwindows"
+				},
+				{
+					"PackageIdentifier": "Highresolution.X-MouseButtonControl"
+				},
+				{
+					"PackageIdentifier": "zig.zig"
+				},
+				{
+					"PackageIdentifier": "Oracle.JavaRuntimeEnvironment"
+				},
+				{
+					"PackageIdentifier": "Telegram.TelegramDesktop"
+				},
+				{
+					"PackageIdentifier": "Twilio.Authy"
 				}
 			],
-			"SourceDetails" : 
-			{
-				"Argument" : "https://cdn.winget.microsoft.com/cache",
-				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
-				"Name" : "winget",
-				"Type" : "Microsoft.PreIndexed.Package"
+			"SourceDetails": {
+				"Argument": "https://cdn.winget.microsoft.com/cache",
+				"Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+				"Name": "winget",
+				"Type": "Microsoft.PreIndexed.Package"
 			}
 		}
 	],
-	"WinGetVersion" : "1.6.2771"
+	"WinGetVersion": "1.6.2771"
 }
