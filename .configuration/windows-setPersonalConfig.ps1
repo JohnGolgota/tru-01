@@ -5,9 +5,9 @@ winget {
 }
 scoop {
 	Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-	irm get.scoop.sh | iex
+	Invoke-RestMethod get.scoop.sh | Invoke-Expression
 	# You can use proxies if you have network trouble in accessing GitHub, e.g.
-	irm get.scoop.sh -Proxy 'http://<ip:port>' | iex
+	Invoke-RestMethod get.scoop.sh -Proxy 'http://<ip:port>' | Invoke-Expression
 }
 git {
 	$Session = $true
@@ -45,6 +45,31 @@ code & code-insiders {
 	}
 	return $true
 }
+pwsh {
+	installation {
+		winget install --id Microsoft.PowerShell -e --source winget
+	}
+	config {
+		pwsh $HOME/tru-01/.configuration/config.pwsh.ps1
+	}
+	profile {
+		code-insiders.cmd $PROFILE
+		{
+			. Custom_Funciones.ps1
+			Set-CustomMain
+		}
+	}
+	return $true
+}
+wt {
+	installation {
+		winget install --id Microsoft.WindowsTerminal -e --source winget
+	}
+	config {
+		wt -p "Windows PowerShell" -d $HOME/tru-01/.configuration/config.wt.json
+	}
+	return $true
+}
 wsl {
 	# WSL2 https://docs.microsoft.com/en-us/windows/wsl/install-win10
 	wsl --install -d Debian
@@ -59,14 +84,19 @@ wsl {
 	# Dependecies neovim
 	git config --global user.name "JohnGolgota"
 	git config --global user.email "js684new@gmail.com"
-	nvm & pnpm { # Dependecies node https://github.com/nvm-sh/nvm#installing-and-updating
-		curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-		nvm install --lts
-		# https://pnpm.io/es/installation
-		curl -fsSL https://get.pnpm.io/install.sh | sh -
+	node js {
+		nvm & pnpm {
+			# Dependecies node https://github.com/nvm-sh/nvm#installing-and-updating
+			curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+			nvm install --lts
+		}
+		pnpm {
+			# https://pnpm.io/es/installation
+			curl -fsSL https://get.pnpm.io/install.sh | sh -
+		}
 	}
-
-	neovim { # https://github.com/neovim/neovim/wiki/Installing-Neovim#linux
+	neovim {
+		# https://github.com/neovim/neovim/wiki/Installing-Neovim#linux
 		curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 		chmod u+x nvim.appimage
 		./nvim.appimage
@@ -80,8 +110,8 @@ wsl {
 			sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 			nvim
 		}
-		# nvim Copilot https://github.com/github/copilot.vim
 		copilot {
+			# nvim Copilot https://github.com/github/copilot.vim
 			git clone https://github.com/github/copilot.vim.git \
 			~/.config/nvim/pack/github/start/copilot.vim
 			{
@@ -89,16 +119,31 @@ wsl {
 			}
 		}
 	}
+	code & code-insiders {
+		# Configs vscode https://code.visualstudio.com/docs/remote/wsl
+		code-insiders.cmd
+		code.cmd
+	}
 	profilings {
 		nvim ~/.bash_aliases | nvim ~/.zshrc | nvim ~/.bashrc
+		{
+			# alias x = nvim
+			# alias c = code-insiders
+		}
 	}
-	# Configs vscode https://code.visualstudio.com/docs/remote/wsl
 }
-
 # Microsoft.VisualStudio.Community
+node {
 
-# nvm https://github.com/coreybutler/nvm-windows
-nvm install --lts
+	nvm {
+		# nvm https://github.com/coreybutler/nvm-windows
+		nvm install --lts
+	}
+	pnpm {
+		# pnpm https://pnpm.io/es/installation
+		Invoke-WebRequest https://get.pnpm.io/install.ps1 -useb | Invoke-Expression
+	}
+}
 
 # Notion
 
@@ -107,12 +152,6 @@ nvm install --lts
 # dbeaver
 
 # Docker
-
-# Git https://git-scm.com/download/win
-git config --global user.name "JohnGolgota"
-git config --global user.email ""
-
-# Github Desktop
 
 # Pcmanager
 
@@ -123,7 +162,3 @@ git config --global user.email ""
 # Windows Terminal
 
 # Python https://www.python.org/downloads/
-
-# Node https://nodejs.org/en/download/
-
-# VS Code

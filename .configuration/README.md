@@ -23,23 +23,40 @@ o [microsoft store](https://apps.microsoft.com/detail/9NBLGGH4NNS1?hl=es-co&gl=C
 ## [Git](https://git-scm.com/download/win)
 
 <!-- Puta Session -->
+instalacion... seh, una mierda
+
 ```bash
 winget install --id Git.Git -e --source winget
+```
 
-# Configs
+si obvio
+
+```bash
 git config --global user.name "JohnGolgota"
 git config --global user.email "js684new@gmail.com"
+```
 
-# Clone primary
+repositorios principales
+
+```bash
 git clone https://github.com/JohnGolgota/tru-01.git $HOME/tru-01
 git clone https://github.com/JohnGolgota/JS.git $env:JS
+```
 
+### script para la instalacion de mis programas
+
+```bash
 winget import $HOME/tru-01/.configuration/winget.json --ignore-unavailable --ignore-version --no-upgrade
-
 ```
 
 ## [GitHub Desktop](https://desktop.github.com/)
 <!-- Session -->
+me basta con abrir los repositorios principales.
+
+```bash
+github $HOME/tru-01
+github $env:JS
+```
 
 ## [Scoop](https://github.com/ScoopInstaller/Install#installation)
 
@@ -60,4 +77,14 @@ code $HOME/tru-01/.configuration/config.code-workspace
 code-insiders $HOME/tru-01/.configuration/config.code-workspace
 ```
 
-## [Windows Subsystem for Linux]()
+## [Node JS](https://nodejs.org/es)
+
+### [nvm](https://github.com/coreybutler/nvm-windows#reinstall-any-global-utilities)
+
+```bash
+nvm install --lts
+```
+
+### [pnpm](https://pnpm.io/es/installation)
+
+## [Windows Subsystem for Linux](a)
