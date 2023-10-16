@@ -26,6 +26,9 @@
           "PackageIdentifier": "pnpm.pnpm"
         },
         {
+          "PackageIdentifier": "Neovim.Neovim"
+        },
+        {
           "PackageIdentifier": "Microsoft.VisualStudio.2022.Community"
         },
         {
@@ -59,9 +62,6 @@
           "PackageIdentifier": "Microsoft.OneDrive"
         },
         {
-          "PackageIdentifier": "PostgreSQL.PostgreSQL"
-        },
-        {
           "PackageIdentifier": "Rustlang.Rustup"
         },
         {
@@ -72,12 +72,6 @@
         },
         {
           "PackageIdentifier": "Insomnia.Insomnia"
-        },
-        {
-          "PackageIdentifier": "ApacheFriends.Xampp.8.2"
-        },
-        {
-          "PackageIdentifier": "Neovim.Neovim"
         },
         {
           "PackageIdentifier": "Python.Python.3.11"
@@ -102,9 +96,6 @@
         },
         {
           "PackageIdentifier": "Logitech.OptionsPlus"
-        },
-        {
-          "PackageIdentifier": "MongoDB.Server"
         },
         {
           "PackageIdentifier": "Microsoft.VCRedist.2015+.x64"

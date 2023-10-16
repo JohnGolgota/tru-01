@@ -10,7 +10,6 @@ scoop {
 	Invoke-RestMethod get.scoop.sh -Proxy 'http://<ip:port>' | Invoke-Expression
 }
 git {
-	$Session = $true
 	installation {
 		winget install --id Git.Git -e --source winget
 	}
@@ -27,9 +26,7 @@ git {
 			winget import $HOME/tru-01/.configuration/winget.json --ignore-unavailable --ignore-version --no-upgrade
 		}
 	}
-	if ($Session) {
-		return $true
-	}
+	return $true
 }
 github {
 	primary repostory {
@@ -59,7 +56,6 @@ pwsh {
 			Set-CustomMain
 		}
 	}
-	return $true
 }
 wt {
 	installation {
@@ -68,7 +64,6 @@ wt {
 	config {
 		wt -p "Windows PowerShell" -d $HOME/tru-01/.configuration/config.wt.json
 	}
-	return $true
 }
 wsl {
 	# WSL2 https://docs.microsoft.com/en-us/windows/wsl/install-win10
@@ -124,17 +119,28 @@ wsl {
 		code-insiders.cmd
 		code.cmd
 	}
+	redis {
+		# https://redis.io/docs/getting-started/installation/install-redis-on-windows/
+		curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+
+		echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+
+		sudo apt-get update
+		sudo apt-get install redis
+	}
+	rust {
+		# https://www.rust-lang.org/tools/install
+		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	}
 	profilings {
 		nvim ~/.bash_aliases | nvim ~/.zshrc | nvim ~/.bashrc
 		{
-			# alias x = nvim
-			# alias c = code-insiders
+			alias x = nvim
+			alias c = code-insiders
 		}
 	}
 }
-# Microsoft.VisualStudio.Community
 node {
-
 	nvm {
 		# nvm https://github.com/coreybutler/nvm-windows
 		nvm install --lts
@@ -144,21 +150,132 @@ node {
 		Invoke-WebRequest https://get.pnpm.io/install.ps1 -useb | Invoke-Expression
 	}
 }
+neovim {
+	installation {
+		scoop install neovim | winget install --id Neovim.Neovim -e --source winget
+	}
+	config {
+		nvim $HOME/tru-01/.configuration/config.nvim.vim
+	}
+	copilot {
+		# nvim Copilot https://github.com/github/copilot.vim
+		git clone https://github.com/github/copilot.vim.git `
+			$HOME/AppData/Local/nvim/pack/github/start/copilot.vim
+		{
+			:Copilot setup
+		}
+	}
+}
+Microsoft.VisualStudio {
+	Community {
+		return $true
+	}
+	BuildTools {
+		return $true
+	}
+	return $true
+}
+Notion {
+	return $true
+}
+Android Studio {
+	return $true
+}
+dbeaver {
+	supabase {
+		# No voy a escribir eso xd
+	}
+	localhost {
 
-# Notion
+	}
+	docker {
 
-# Android Studio
-
-# dbeaver
-
-# Docker
-
-# Pcmanager
-
-# Edge
-
-# DevHome
-
-# Windows Terminal
-
-# Python https://www.python.org/downloads/
+	}
+	return $false
+}
+Docker {
+	mariadb {
+		# https://hub.docker.com/_/mariadb
+		docker run --name some-mariadb -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mariadb:tag
+	}
+	postgresql {
+		# https://hub.docker.com/_/postgres
+		docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+	}
+	mongodb {
+		# https://hub.docker.com/_/mongo
+		docker run --name some-mongo -d mongo:tag
+		return $true
+	}
+	rust {
+		# https://hub.docker.com/_/rust
+		docker run -it --name my-running-app my-rust-app
+		return $true
+	}
+	redis {
+		# https://redis.io/docs/getting-started/install-stack/docker/
+		# https://hub.docker.com/_/redis
+		docker run --name some-redis -d redis
+		return $true
+	}
+	return $true
+}
+Python {
+	# https://www.python.org/downloads/
+	return $false
+}
+rust {
+	# https://www.rust-lang.org/tools/install
+	return $false
+}
+zig {
+	# https://ziglang.org/download/
+	return $false
+}
+GoLang {
+	# https://golang.org/doc/install
+	return $false
+}
+OBSStudio {
+	return $true
+}
+steam {
+	return $true
+}
+insomnia {
+	return $true
+}
+TightVNC {
+	return $true
+}
+PowerToys {
+	return $true
+}
+AnyDesk {
+	return $true
+}
+redis {
+	# https://redis.io/download
+	return $false
+}
+Discord {
+	return $true
+}
+seccond {
+	Pcmanager {
+		return $false
+	}
+	Edge {
+		return $true
+	}
+	DevHome {
+		return $true
+	}
+	OneDrive {
+		return $true
+	}
+	OptionsPlus {
+		# Que las fs funcionen como fs
+		return $true
+	}
+}
