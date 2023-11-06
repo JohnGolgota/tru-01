@@ -22,3 +22,5 @@ Repositorios de prueba en multiples leguajes interesantes
 - [arquitectura](./docs/architecture.md)
 - [Formaters Linters](./docs/formaters.md)
 - [Builders](./docs/builders.md)
+
+:sob: 😭 :sob: :sob:
