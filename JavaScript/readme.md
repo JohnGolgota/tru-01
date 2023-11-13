@@ -4,6 +4,8 @@
 
 ## cont
 
+Quiero hacer cosas pero quiero mas estar muerto
+
 ### en desarrollo
 
 - [electron first](./electron-first/README.md)
