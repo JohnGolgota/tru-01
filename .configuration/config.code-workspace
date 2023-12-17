@@ -9,7 +9,7 @@
 		"editor.codeActionsOnSave": {
 			"source.fixAll": "always",
 			"source.organizeImports": "always",
-			"source.fixAll.markdownlint": true
+			"source.fixAll.markdownlint": "explicit"
 		},
 		"editor.detectIndentation": false,
 		"editor.fontLigatures": true,
@@ -60,6 +60,21 @@
 		"[typescriptreact]": {
 			"editor.defaultFormatter": "vscode.typescript-language-features"
 		},
+		"git.confirmSync": false,
+		"turboConsoleLog.includeFileNameAndLineNum": false,
+		"turboConsoleLog.insertEnclosingClass": false,
+		"turboConsoleLog.insertEnclosingFunction": false,
+		"turboConsoleLog.addSemicolonInTheEnd": false,
+		"turboConsoleLog.delimiterInsideMessage": "~",
+		"turboConsoleLog.insertEmptyLineAfterLogMessage": false,
+		"turboConsoleLog.insertEmptyLineBeforeLogMessage": false,
+		"turboConsoleLog.logFunction": "log",
+		"turboConsoleLog.logMessageSuffix": ":",
+		"turboConsoleLog.logType": "log",
+		"turboConsoleLog.quote": "\"",
+		"turboConsoleLog.wrapLogMessage": false,
+		"turboConsoleLog.logMessagePrefix": "",
+		"workbench.sideBar.location": "right",
 	},
 	"extensions": {
 		"recommendations": [
