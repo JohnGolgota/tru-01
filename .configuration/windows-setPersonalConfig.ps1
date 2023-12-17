@@ -23,7 +23,7 @@ git {
 	}
 	winget {
 		import {
-			winget import $HOME/tru-01/.configuration/winget.json --ignore-unavailable --ignore-version --no-upgrade
+			winget import $HOME/tru-01/.configuration/winget.json --ignore-unavailable --no-upgrade
 		}
 	}
 	return $true
@@ -43,6 +43,7 @@ code & code-insiders {
 	return $true
 }
 pwsh {
+	# https://learn.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.3
 	installation {
 		winget install --id Microsoft.PowerShell -e --source winget
 	}
@@ -113,6 +114,11 @@ wsl {
 				:Copilot setup
 			}
 		}
+		plugvim {
+			# https://github.com/junegunn/vim-plug
+			Invoke-WebRequest -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+				New-Item "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
+		}
 	}
 	code & code-insiders {
 		# Configs vscode https://code.visualstudio.com/docs/remote/wsl
@@ -164,6 +170,11 @@ neovim {
 		{
 			:Copilot setup
 		}
+	}
+	plugvim {
+		# https://github.com/junegunn/vim-plug
+		Invoke-WebRequest -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+			New-Item "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
 	}
 }
 Microsoft.VisualStudio {

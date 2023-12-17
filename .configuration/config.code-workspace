@@ -60,6 +60,9 @@
 		"[typescriptreact]": {
 			"editor.defaultFormatter": "vscode.typescript-language-features"
 		},
+		"[powershell]": {
+			"editor.defaultFormatter": "ms-vscode.powershell"
+		},
 		"git.confirmSync": false,
 		"turboConsoleLog.includeFileNameAndLineNum": false,
 		"turboConsoleLog.insertEnclosingClass": false,
@@ -74,7 +77,7 @@
 		"turboConsoleLog.quote": "\"",
 		"turboConsoleLog.wrapLogMessage": false,
 		"turboConsoleLog.logMessagePrefix": "",
-		"workbench.sideBar.location": "right",
+		"workbench.sideBar.location": "right"
 	},
 	"extensions": {
 		"recommendations": [
