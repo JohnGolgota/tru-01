@@ -1,0 +1,15 @@
+{
+    "folders": [
+        {
+            "path": ".."
+        }
+    ],
+    "settings": {
+        "workbench.colorTheme": "Monokai Pro",
+        "workbench.iconTheme": "Monokai Pro Icons",
+        "rust-analyzer.linkedProjects": [
+            ".\\Cargo.toml",
+            ".\\Cargo.toml"
+        ]
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "folders": [
+        {
+            "path": ".."
+        }
+    ],
+    "settings": {
+        "workbench.iconTheme": "helium-icon-theme",
+        "workbench.colorTheme": "One Dark Pro",
+        "rust-analyzer.linkedProjects": [
+            ".\\Cargo.toml",
+            ".\\Cargo.toml",
+            ".\\Cargo.toml"
+        ],
+        "oneDarkPro.vivid": true,
+        "workbench.sideBar.location": "right",
+        "rust-analyzer.showUnlinkedFileNotification": false
+    }
+}
