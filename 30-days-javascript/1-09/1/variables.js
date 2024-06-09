@@ -11,7 +11,7 @@ let variableConValor = "Hola Mundo";
 let variableConValor2 = true;
 let variableConValor3 = 1;
 
-let myNombre = "John";
+let miNombre = "John";
 let miApellido = "Doe";
 
 let miEstadoCivil = "Sin Esperanza";
@@ -21,4 +21,5 @@ let miEdad = 25;
 
 let miInfo = [miNombre, miApellido, miEdad, miPais, miEstadoCivil];
 
-export { cadena, bool, indefinido, nulo, variableSinDefinir, variableSinDefinir2, variableSinDefinir3, variableConValor, variableConValor2, variableConValor3, myNombre, miApellido, miEstadoCivil, miPais, miEdad, miInfo };
+export { bool, cadena, indefinido, miApellido, miEdad, miEstadoCivil, miInfo, miNombre, miPais, nulo, variableConValor, variableConValor2, variableConValor3, variableSinDefinir, variableSinDefinir2, variableSinDefinir3 };
+
